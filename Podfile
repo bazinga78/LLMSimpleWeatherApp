@@ -8,13 +8,14 @@ pod 'AFNetworking', '~> 2.3'
 
 target :LLMSimpleWeatherAppTests do
 
+  # Mocks & Stubs
+
   pod 'OCMock',        '~> 3.0'
   pod 'OHHTTPStubs',   '~> 3.1.0'
+
+  # Utils to have clean tests
+
   pod 'NSDate-Escort', '~> 1.4'
-
-  pod 'OHHTTPStubs',   '~> 3.1'
-  pod 'XCTest+OHHTTPStubSuiteCleanUp', '~> 1.0'
-
   pod 'NSURL+QueryDictionary', '~> 1.0'
 
 end

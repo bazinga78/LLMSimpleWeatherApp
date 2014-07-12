@@ -14,16 +14,16 @@ NSString * const LLMWeatherNetworkManagerBaseURLString = @"http://api.openweathe
 
 - (void)getWeatherForecastForDate:(NSDate *)date
                            cityOf:(NSString *)cityName
-                          success:(LLMWeatherNetworkManagerSuccess)success
-                            error:(LLMWeatherNetworkManagerFailure)error {
+                          success:(LLMWeatherNetworkManagerSuccess)successBlock
+                            error:(LLMWeatherNetworkManagerFailure)errorBlock {
 
     NSDictionary *parameters = @{@"q": cityName};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:LLMWeatherNetworkManagerBaseURLString parameters:parameters
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        successBlock(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        errorBlock(error);
     }];
 }
 

@@ -9,33 +9,11 @@
 #import <XCTest/XCTest.h>
 
 #import <OCMock/OCMock.h>
-#import <NSDate-Escort/NSDate+Escort.h>
 
 #import "LLMArg.h"
 #import "LLMJSONFeatureFileLoader.h"
 
 #import "LLMCurrentWeatherInteractor.h"
-
-#pragma mark - Utility classes
-
-@interface LLMCurrentWeatherInteractorOutputDelegateStub : NSObject <LLMCurrentWeatherInteractorOutputDelegate>
-
-@property (nonatomic, strong) NSError *lastErrorReceived;
-@property (nonatomic, strong) LLMWeather *lastResultReceived;
-
-@end
-
-@implementation LLMCurrentWeatherInteractorOutputDelegateStub
-
-- (void)currentWeatherInteractor:(LLMCurrentWeatherInteractor *)currentWeatherInteractor didReceiveUpdatesAboutWeather:(LLMWeather *)currentWeather {
-    self.lastResultReceived = currentWeather;
-}
-
-- (void)currentWeatherInteractor:(LLMCurrentWeatherInteractor *)currentWeatherInteractor didFailWithError:(NSError *)error {
-    self.lastErrorReceived = error;
-}
-
-@end
 
 @interface LLMCurrentWeatherTestCase : XCTestCase
 
@@ -112,7 +90,7 @@
     NSDictionary *expectedResult = [NSDictionary new];
 
     id weatherNetworkManagerStub = [self createWeatherNetworkManagerStubWithSuccessfulResponse:expectedResult];
-    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutputDelegate)];
+    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutput)];
 
     LLMCurrentWeatherInteractor *currentWeatherInteractor = [LLMCurrentWeatherInteractor new];
     currentWeatherInteractor.outputDelegate = currentWeatherOutputDelegateMock;
@@ -131,7 +109,7 @@
     NSError *expectedError = [NSError errorWithDomain:LLMSimpleWeatherNetworkError code:LLMGenericNetworkError userInfo:nil];
 
     id weatherNetworkManagerStub = [self createWeatherNetworkManagerStubWithFailureError:expectedError];
-    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutputDelegate)];
+    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutput)];
 
     LLMCurrentWeatherInteractor *currentWeatherInteractor = [LLMCurrentWeatherInteractor new];
     currentWeatherInteractor.outputDelegate = currentWeatherOutputDelegateMock;
@@ -153,7 +131,7 @@
     LLMWeather *result = [LLMWeather new];
 
     id weatherNetworkManagerStub = [self createWeatherNetworkManagerStubWithSuccessfulResponse:featureData];
-    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutputDelegate)];
+    id currentWeatherOutputDelegateMock = [OCMockObject niceMockForProtocol:@protocol(LLMCurrentWeatherInteractorOutput)];
     id weatherMapperStub = [OCMockObject mockForProtocol:@protocol(LLMMapperInterface)];
     OCMStub([weatherMapperStub mapDictionaryToEntity:featureData]).andReturn(result);
 

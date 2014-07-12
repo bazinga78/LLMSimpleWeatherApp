@@ -7,24 +7,39 @@
 //
 
 #import <XCTest/XCTest.h>
+
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <NSURL+QueryDictionary/NSURL+QueryDictionary.h>
 
+#import "XCTestCase+AsyncTesting.h"
+
 #import "LLMWeatherNetworkManager.h"
 
-@interface LLMWeatherNetworkManagerTestCase : XCTestCase
+NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_current-weather_logic_current-weather-test-case_simple-result.json";
 
+@interface LLMWeatherNetworkManagerTestCase : XCTestCase
 @end
 
 @implementation LLMWeatherNetworkManagerTestCase
 
+#pragma mark - Utils
+
+- (NSString *)getFixturePathForSimpleResult {
+    return OHPathForFileInBundle(LLMWeatherNetworkManagerTestCaseSimpleFixturePath,
+                                 [NSBundle bundleForClass:[self class]]);
+}
+
+- (void)tearDown {
+    [super tearDown];
+
+    // We need to call removeAllStubs to be sure all out following tests
+    // are clean.
+    [OHHTTPStubs removeAllStubs];
+}
+
 #pragma mark - Test
 
 - (void)test_when_calling_the_method_a_http_request_to_the_correct_url_should_be_sent {
-
-    // Dispatch group is used to handle the async call
-    dispatch_group_t syncGroup = dispatch_group_create();
-    dispatch_group_enter(syncGroup);
 
     // Given
     __block NSURL *requestURL = nil;
@@ -33,8 +48,7 @@
         requestURL = request.URL;
         return YES;
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        NSString* fixture = OHPathForFileInBundle(@"modules_current-weather_logic_current-weather-test-case_simple-result.json", [NSBundle bundleForClass:[self class]]);
-        dispatch_group_leave(syncGroup);
+        NSString* fixture = [self getFixturePathForSimpleResult];
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
                                                 statusCode:200
                                                    headers:@{@"Content-Type" : @"text/json"}];
@@ -44,9 +58,12 @@
     LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
 
     // When
-    [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London" success:nil error:nil];
+    [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
+    success:^(id result) {
+        [self XCA_notify:XCTAsyncTestCaseStatusSucceeded];
+    } error:nil];
 
-    dispatch_group_wait(syncGroup, DISPATCH_TIME_FOREVER);
+    [self XCA_waitForTimeout:3.0];
 
     // Then
 
@@ -59,16 +76,81 @@
     NSDictionary *queryComponents = [requestURL uq_queryDictionary];
     XCTAssertEqual([queryComponents count], 1);
     XCTAssertEqualObjects(queryComponents[@"q"], @"London");
-
-    XCTFail(@"I want the test to fail just to remember where I was working");
 }
 
-// test blocks are called
+- (void)test_when_a_successful_response_is_received_the_success_block_should_be_called {
 
-// test no connection
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        NSString* fixture = [self getFixturePathForSimpleResult];
+        return [OHHTTPStubsResponse responseWithFileAtPath:fixture
+                                                statusCode:200
+                                                   headers:@{@"Content-Type" : @"text/json"}];
+    }];
 
-// test empty data
+    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
 
-// test normal usage
+    // When
+    [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
+    success:^(id result) {
+        [self XCA_notify:XCTAsyncTestCaseStatusSucceeded];
+    } error:^(NSError *error) {
+        [self XCA_notify:XCTAsyncTestCaseStatusFailed];
+    }];
+
+    // Then
+    [self XCA_waitForStatus:XCTAsyncTestCaseStatusSucceeded timeout:3.0];
+
+}
+
+- (void)test_when_a_failure_response_is_received_the_failure_block_should_be_called {
+
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        return [OHHTTPStubsResponse responseWithData:nil
+                                          statusCode:500
+                                             headers:nil];
+    }];
+
+    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+
+    // When
+    [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
+                                      success:^(id result) {
+        [self XCA_notify:XCTAsyncTestCaseStatusFailed];
+    } error:^(NSError *error) {
+        [self XCA_notify:XCTAsyncTestCaseStatusSucceeded];
+    }];
+
+    // Then
+    [self XCA_waitForStatus:XCTAsyncTestCaseStatusSucceeded timeout:3.0];
+}
+
+- (void)test_when_there_is_no_connection_a_proper_error_message_should_be_returned {
+
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        return [OHHTTPStubsResponse responseWithError:
+                [NSError errorWithDomain:NSURLErrorDomain
+                                    code:kCFURLErrorNotConnectedToInternet
+                                userInfo:nil]];
+    }];
+
+    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+
+    // When
+    [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
+                                      success:^(id result) {
+        [self XCA_notify:XCTAsyncTestCaseStatusFailed];
+    } error:^(NSError *error) {
+        [self XCA_notify:XCTAsyncTestCaseStatusSucceeded];
+    }];
+
+    // Then
+    [self XCA_waitForStatus:XCTAsyncTestCaseStatusSucceeded timeout:3.0];
+}
 
 @end

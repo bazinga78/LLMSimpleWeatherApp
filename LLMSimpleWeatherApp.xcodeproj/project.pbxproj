@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6217607B3A54CD6662BD0D9D /* LLMCurrentWeatherTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176A2FF37CA6C020993ED2 /* LLMCurrentWeatherTestCase.m */; };
 		6217609381D5D9E7119CFF70 /* LLMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176359D7F0F1DD22717183 /* LLMViewController.m */; };
+		6217617DCEAB86D90CA35250 /* NSError+LLMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621767CB5C7947BC0A1FBD03 /* NSError+LLMUtils.m */; };
 		621761A7C7BFEFEEA4CADA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621769968B98F4C9A5B43D7D /* Main.storyboard */; };
 		621761FFAB88D230E7242A86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6217637E5014E8F787DF9DCB /* InfoPlist.strings */; };
 		6217624858AFEDED0D8BF7E8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62176FAFF044285174DA5260 /* XCTest.framework */; };
@@ -22,15 +23,22 @@
 		62176601446CCA3A727DD5E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621762DC913751CFD5DB504A /* UIKit.framework */; };
 		621766059CD35C44CD06E1A5 /* LLMWeatherMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176271D24FE35ECEEC1955 /* LLMWeatherMapper.m */; };
 		621766459F9F35E988124B46 /* LLMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6217694D57CB1C3F652D4613 /* LLMAppDelegate.m */; };
+		621767731100132340A50924 /* LLMWeatherDisplayData.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176A79BC801CC1CF42188B /* LLMWeatherDisplayData.m */; };
 		62176826766E68F3B8FC8DDB /* LLMWeatherNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176C7304EC8CE41482C68A /* LLMWeatherNetworkManager.m */; };
 		621768ECB99A1CF3CF1A4BAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62176CBA637F210DAEA7729F /* Foundation.framework */; };
 		621769D6CE805C1D4D837E1F /* modules_current-weather_logic_current-weather-test-case_simple-result.json in Resources */ = {isa = PBXBuildFile; fileRef = 62176312B02E3D6D098C7F5E /* modules_current-weather_logic_current-weather-test-case_simple-result.json */; };
+		62176A36D0F0EFF6C033A2AF /* LLMWeatherDisplayData.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176A79BC801CC1CF42188B /* LLMWeatherDisplayData.m */; };
 		62176A445DCE78AB2DC0FDB7 /* LLMCurrentWeatherInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6217694D218B097C014D8611 /* LLMCurrentWeatherInteractor.m */; };
+		62176A50D2864ADFEAA5E3F5 /* NSError+LLMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621767CB5C7947BC0A1FBD03 /* NSError+LLMUtils.m */; };
 		62176ABD4C6250CC03E09502 /* LLMWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 621767F4710165A22CCC187E /* LLMWeather.m */; };
 		62176B8283B890A4C41AA5D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62176CBA637F210DAEA7729F /* Foundation.framework */; };
 		62176B88BC945F58AD55D83F /* LLMWeatherMapperTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 621768629BEB2CF43BDC526A /* LLMWeatherMapperTestCase.m */; };
+		62176B9EAD4E5006B08247DC /* XCTestCase+AsyncTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 621767C35CB20E294637FA55 /* XCTestCase+AsyncTesting.m */; };
 		62176BA9D606C5BC492C4C16 /* LLMWeatherMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176271D24FE35ECEEC1955 /* LLMWeatherMapper.m */; };
 		62176C592C594794FAAA7495 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 621760D2A465DB4BD063B59D /* main.m */; };
+		62176E717246327398D80D93 /* LLMCurrentWeatherPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176803A780D2B6E5853620 /* LLMCurrentWeatherPresenter.m */; };
+		62176EB6C38636FDB380C5F6 /* LLMCurrentWeatherPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176803A780D2B6E5853620 /* LLMCurrentWeatherPresenter.m */; };
+		62176EED642694335D729258 /* LLMCurrentWeatherPresenterTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6217653659FB65ACFDB4DC22 /* LLMCurrentWeatherPresenterTestCase.m */; };
 		62176F347AC599EC80E1E851 /* LLMWeatherNetworkManagerTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 62176C332BB1B528D97FA210 /* LLMWeatherNetworkManagerTestCase.m */; };
 		62176F3C8C5869401BC94A50 /* LLMCurrentWeatherInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6217694D218B097C014D8611 /* LLMCurrentWeatherInteractor.m */; };
 		62176F40F26B7A227C51E939 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62176ACAC83B8D4B42C8E369 /* InfoPlist.strings */; };
@@ -54,30 +62,42 @@
 		3AEEE8EC6B6F48AF92EB95EF /* Pods-LLMSimpleWeatherAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLMSimpleWeatherAppTests.xcconfig"; path = "Pods/Pods-LLMSimpleWeatherAppTests.xcconfig"; sourceTree = "<group>"; };
 		6217601037B41ACA721038C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		621760D2A465DB4BD063B59D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		621761850D85DDE1C1B0AA50 /* LLMCurrentWeatherInteractorInputOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMCurrentWeatherInteractorInputOutput.h; sourceTree = "<group>"; };
+		621761E49409AEB6DAE074B4 /* LLMCurrentWeatherViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMCurrentWeatherViewInterface.h; sourceTree = "<group>"; };
 		62176257197018D716506ADE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		62176271D24FE35ECEEC1955 /* LLMWeatherMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeatherMapper.m; sourceTree = "<group>"; };
 		621762C3101615797D9E9DF6 /* LLMSimpleWeatherApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "LLMSimpleWeatherApp-Info.plist"; sourceTree = "<group>"; };
 		621762DC913751CFD5DB504A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		621762E1BF6276362E25AA50 /* LLMMapperInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMMapperInterface.h; sourceTree = "<group>"; };
+		621762EB6880121C93EF81DE /* NSError+LLMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LLMUtils.h"; sourceTree = "<group>"; };
 		621762F1D07E9D4A6D7FCA20 /* LLMSimpleWeatherAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "LLMSimpleWeatherAppTests-Info.plist"; sourceTree = "<group>"; };
 		62176312B02E3D6D098C7F5E /* modules_current-weather_logic_current-weather-test-case_simple-result.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "modules_current-weather_logic_current-weather-test-case_simple-result.json"; sourceTree = "<group>"; };
 		62176359D7F0F1DD22717183 /* LLMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMViewController.m; sourceTree = "<group>"; };
 		621763B650AB17D65821ACD9 /* LLMArg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMArg.m; sourceTree = "<group>"; };
 		62176453F19BB81754CE15E8 /* LLMUnitConversionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMUnitConversionUtils.h; sourceTree = "<group>"; };
+		6217653659FB65ACFDB4DC22 /* LLMCurrentWeatherPresenterTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMCurrentWeatherPresenterTestCase.m; sourceTree = "<group>"; };
+		621765393FED0E37175FAD95 /* LLMWeatherDisplayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMWeatherDisplayData.h; sourceTree = "<group>"; };
+		621765492A4EA4A85E046BB2 /* LLMErrorHandlerViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMErrorHandlerViewInterface.h; sourceTree = "<group>"; };
 		621766A2C64579BCCB2AE1BC /* LLMSimpleWeatherApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LLMSimpleWeatherApp-Prefix.pch"; sourceTree = "<group>"; };
 		621766DF3A6B6CA8EB7F207E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LLMSimpleWeatherApp/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		621766E05E918E5A57FEA0CF /* LLMWeatherMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMWeatherMapper.h; sourceTree = "<group>"; };
 		621767192AD6FC470C8A30AB /* LLMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMArg.h; sourceTree = "<group>"; };
 		621767646C9DD3AD5031BA64 /* LLMWeatherNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMWeatherNetworkManager.h; sourceTree = "<group>"; };
 		621767798F8DA0350E6AF651 /* LLMCurrentWeatherInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMCurrentWeatherInteractor.h; sourceTree = "<group>"; };
+		621767BA17A9F657BFF69458 /* LLMCurrentWeatherPresenterInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMCurrentWeatherPresenterInterface.h; sourceTree = "<group>"; };
+		621767C35CB20E294637FA55 /* XCTestCase+AsyncTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+AsyncTesting.m"; sourceTree = "<group>"; };
+		621767CB5C7947BC0A1FBD03 /* NSError+LLMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LLMUtils.m"; sourceTree = "<group>"; };
 		621767F4710165A22CCC187E /* LLMWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeather.m; sourceTree = "<group>"; };
+		62176803A780D2B6E5853620 /* LLMCurrentWeatherPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMCurrentWeatherPresenter.m; sourceTree = "<group>"; };
 		621768629BEB2CF43BDC526A /* LLMWeatherMapperTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeatherMapperTestCase.m; sourceTree = "<group>"; };
 		6217694D218B097C014D8611 /* LLMCurrentWeatherInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMCurrentWeatherInteractor.m; sourceTree = "<group>"; };
 		6217694D57CB1C3F652D4613 /* LLMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMAppDelegate.m; sourceTree = "<group>"; };
 		62176A2FF37CA6C020993ED2 /* LLMCurrentWeatherTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMCurrentWeatherTestCase.m; sourceTree = "<group>"; };
+		62176A79BC801CC1CF42188B /* LLMWeatherDisplayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeatherDisplayData.m; sourceTree = "<group>"; };
 		62176AB78692DF998BDA7462 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		62176B097B74D1E592D579CF /* LLMJSONFeatureFileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMJSONFeatureFileLoader.h; sourceTree = "<group>"; };
 		62176C332BB1B528D97FA210 /* LLMWeatherNetworkManagerTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeatherNetworkManagerTestCase.m; sourceTree = "<group>"; };
+		62176C603AFE9A999BBEB553 /* LLMCurrentWeatherPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMCurrentWeatherPresenter.h; sourceTree = "<group>"; };
 		62176C61831C8F6729E09FB8 /* LLMWeatherDataManagerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMWeatherDataManagerInterface.h; sourceTree = "<group>"; };
 		62176C7304EC8CE41482C68A /* LLMWeatherNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMWeatherNetworkManager.m; sourceTree = "<group>"; };
 		62176CB52373D98E1D8CF9C3 /* LLMJSONFeatureFileLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMJSONFeatureFileLoader.m; sourceTree = "<group>"; };
@@ -85,6 +105,7 @@
 		62176CFD60006952CCF9566B /* LLMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMAppDelegate.h; sourceTree = "<group>"; };
 		62176D183C0D60323DD5D518 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		62176E6AEC8C4CD8D900985C /* LLMWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMWeather.h; sourceTree = "<group>"; };
+		62176EAD42E5B3ACC77E34CB /* XCTestCase+AsyncTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+AsyncTesting.h"; sourceTree = "<group>"; };
 		62176EF14BCB2E80BD48EE22 /* LLMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMViewController.h; sourceTree = "<group>"; };
 		62176F103C340C0B31CF6A38 /* LLMSimpleWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LLMSimpleWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62176FAFF044285174DA5260 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62176007B9D066F3DE1127CA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6217653659FB65ACFDB4DC22 /* LLMCurrentWeatherPresenterTestCase.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		62176052AA7A8251082BE22D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +176,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		62176212D40B509C1B61071B /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				62176EAD42E5B3ACC77E34CB /* XCTestCase+AsyncTesting.h */,
+				621767C35CB20E294637FA55 /* XCTestCase+AsyncTesting.m */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
 		6217624358E2188660671133 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,22 +197,30 @@
 			isa = PBXGroup;
 			children = (
 				62176A6A997F9DE90D67E09E /* Logic */,
-				621763C80695F0B04B43C227 /* Interfaces */,
+				621763C80695F0B04B43C227 /* Presenter */,
+				62176D19114BD6546E9B32A6 /* Views */,
 			);
 			path = CurrentWeather;
 			sourceTree = "<group>";
 		};
-		621763C80695F0B04B43C227 /* Interfaces */ = {
+		621763C80695F0B04B43C227 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				62176803A780D2B6E5853620 /* LLMCurrentWeatherPresenter.m */,
+				62176C603AFE9A999BBEB553 /* LLMCurrentWeatherPresenter.h */,
+				621767BA17A9F657BFF69458 /* LLMCurrentWeatherPresenterInterface.h */,
+				62176A79BC801CC1CF42188B /* LLMWeatherDisplayData.m */,
+				621765393FED0E37175FAD95 /* LLMWeatherDisplayData.h */,
 			);
-			path = Interfaces;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		621764EFA78D947BE534C0A2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				62176453F19BB81754CE15E8 /* LLMUnitConversionUtils.h */,
+				621767CB5C7947BC0A1FBD03 /* NSError+LLMUtils.m */,
+				621762EB6880121C93EF81DE /* NSError+LLMUtils.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,8 +271,17 @@
 				62176D0C0D50C08BA18CCD12 /* Entities */,
 				621764EFA78D947BE534C0A2 /* Utils */,
 				621760CB11E9B5095D55B0F1 /* Mappers */,
+				6217683801ACC1F151EF9D93 /* Views */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		6217683801ACC1F151EF9D93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				621765492A4EA4A85E046BB2 /* LLMErrorHandlerViewInterface.h */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		621769474AF856A3290AC4A7 /* Network */ = {
@@ -252,6 +307,7 @@
 			children = (
 				6217694D218B097C014D8611 /* LLMCurrentWeatherInteractor.m */,
 				621767798F8DA0350E6AF651 /* LLMCurrentWeatherInteractor.h */,
+				621761850D85DDE1C1B0AA50 /* LLMCurrentWeatherInteractorInputOutput.h */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -271,6 +327,7 @@
 				621767192AD6FC470C8A30AB /* LLMArg.h */,
 				62176CB52373D98E1D8CF9C3 /* LLMJSONFeatureFileLoader.m */,
 				62176B097B74D1E592D579CF /* LLMJSONFeatureFileLoader.h */,
+				62176212D40B509C1B61071B /* ThirdParty */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -293,6 +350,14 @@
 				62176E6AEC8C4CD8D900985C /* LLMWeather.h */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		62176D19114BD6546E9B32A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				621761E49409AEB6DAE074B4 /* LLMCurrentWeatherViewInterface.h */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		62176D588D25F37B548E204E /* Commons */ = {
@@ -369,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				6217674FD626480E284AEDE9 /* Logic */,
+				62176007B9D066F3DE1127CA /* Presenter */,
 			);
 			path = CurrentWeather;
 			sourceTree = "<group>";
@@ -550,6 +616,11 @@
 				621766059CD35C44CD06E1A5 /* LLMWeatherMapper.m in Sources */,
 				62176F347AC599EC80E1E851 /* LLMWeatherNetworkManagerTestCase.m in Sources */,
 				62176826766E68F3B8FC8DDB /* LLMWeatherNetworkManager.m in Sources */,
+				62176B9EAD4E5006B08247DC /* XCTestCase+AsyncTesting.m in Sources */,
+				62176EB6C38636FDB380C5F6 /* LLMCurrentWeatherPresenter.m in Sources */,
+				62176EED642694335D729258 /* LLMCurrentWeatherPresenterTestCase.m in Sources */,
+				62176A36D0F0EFF6C033A2AF /* LLMWeatherDisplayData.m in Sources */,
+				6217617DCEAB86D90CA35250 /* NSError+LLMUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +635,9 @@
 				6217636A0D23C343193DF553 /* LLMWeatherNetworkManager.m in Sources */,
 				62176ABD4C6250CC03E09502 /* LLMWeather.m in Sources */,
 				62176BA9D606C5BC492C4C16 /* LLMWeatherMapper.m in Sources */,
+				62176E717246327398D80D93 /* LLMCurrentWeatherPresenter.m in Sources */,
+				621767731100132340A50924 /* LLMWeatherDisplayData.m in Sources */,
+				62176A50D2864ADFEAA5E3F5 /* NSError+LLMUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
