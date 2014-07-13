@@ -44,16 +44,15 @@
 }
 
 - (void)test_weather_type_are_converted_correctly {
-
-    XCTAssertTrue(NSStringToLLMWeatherType(@"clear sky") == LLMClearSkyWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"few clouds") == LLMFewCloudsWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"scattered clouds") == LLMScatteredCloudsWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"broken clouds") == LLMBrokenCloundsWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"shower rain") == LLMShowerRainWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"rain") == LLMRainWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"thunderstorm") == LLMThunderstormWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"snow") == LLMSnowWeatherType);
-    XCTAssertTrue(NSStringToLLMWeatherType(@"mist") == LLMMistWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"01d") == LLMClearSkyWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"02d") == LLMFewCloudsWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"03d") == LLMScatteredCloudsWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"04d") == LLMBrokenCloudsWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"09d") == LLMShowerRainWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"10d") == LLMRainWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"11d") == LLMThunderstormWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"13d") == LLMSnowWeatherType);
+    XCTAssertTrue(NSStringToLLMWeatherType(@"50d") == LLMMistWeatherType);
 }
 
 - (void)test_actual_data_is_mapped_correctly {

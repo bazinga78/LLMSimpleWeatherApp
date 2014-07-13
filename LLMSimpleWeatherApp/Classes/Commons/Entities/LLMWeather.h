@@ -9,7 +9,7 @@ typedef NS_ENUM(NSUInteger, LLMWeatherType) {
     LLMClearSkyWeatherType,
     LLMFewCloudsWeatherType,
     LLMScatteredCloudsWeatherType,
-    LLMBrokenCloundsWeatherType,
+    LLMBrokenCloudsWeatherType,
     LLMShowerRainWeatherType,
     LLMRainWeatherType,
     LLMThunderstormWeatherType,

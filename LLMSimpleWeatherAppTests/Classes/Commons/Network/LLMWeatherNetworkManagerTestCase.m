@@ -39,6 +39,12 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
 
 #pragma mark - Test
 
+- (void)test_calling_the_default_init_should_raise_an_assert_exception {
+
+    // when / then
+    XCTAssertThrows([[LLMWeatherNetworkManager alloc] init]);
+}
+
 - (void)test_when_calling_the_method_a_http_request_to_the_correct_url_should_be_sent {
 
     // Given
@@ -55,7 +61,7 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
 
     }];
 
-    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+    LLMWeatherNetworkManager *networkManager = [[LLMWeatherNetworkManager alloc] initWithAPIKey:@"APIKEY"];
 
     // When
     [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
@@ -67,15 +73,16 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
 
     // Then
 
-    // The URL called should be: api.openweathermap.org/data/2.5/weather?q=London
+    // The URL called should be: api.openweathermap.org/data/2.5/weather?q=London&APPID=APIKEY
     XCTAssertNotNil(requestURL);
 
     XCTAssertEqualObjects(requestURL.host, @"api.openweathermap.org");
     XCTAssertEqualObjects(requestURL.path, @"/data/2.5/weather");
 
     NSDictionary *queryComponents = [requestURL uq_queryDictionary];
-    XCTAssertEqual([queryComponents count], 1);
+    XCTAssertEqual([queryComponents count], 2);
     XCTAssertEqualObjects(queryComponents[@"q"], @"London");
+    XCTAssertEqualObjects(queryComponents[@"APPID"], @"APIKEY");
 }
 
 - (void)test_when_a_successful_response_is_received_the_success_block_should_be_called {
@@ -89,7 +96,7 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
                                                    headers:@{@"Content-Type" : @"text/json"}];
     }];
 
-    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+    LLMWeatherNetworkManager *networkManager = [[LLMWeatherNetworkManager alloc] initWithAPIKey:@"APIKEY"];
 
     // When
     [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
@@ -114,7 +121,7 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
                                              headers:nil];
     }];
 
-    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+    LLMWeatherNetworkManager *networkManager = [[LLMWeatherNetworkManager alloc] initWithAPIKey:@"APIKEY"];
 
     // When
     [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"
@@ -139,7 +146,7 @@ NSString * const LLMWeatherNetworkManagerTestCaseSimpleFixturePath = @"modules_c
                                 userInfo:nil]];
     }];
 
-    LLMWeatherNetworkManager *networkManager = [LLMWeatherNetworkManager new];
+    LLMWeatherNetworkManager *networkManager = [[LLMWeatherNetworkManager alloc] initWithAPIKey:@"APIKEY"];
 
     // When
     [networkManager getWeatherForecastForDate:[NSDate new] cityOf:@"London"

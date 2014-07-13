@@ -5,9 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ * Describes the behaviour for a view which can handle errors.
+ */
 @protocol LLMErrorHandlerViewInterface <NSObject>
 
+/*
+ * A generic error handling method.
+ */
 - (void)showGenericError:(NSError *)error;
+
+/*
+ * A specific method to be used when the error is a 'No connection' error.
+ */
 - (void)showNoConnectionError;
 
 @end

@@ -4,6 +4,9 @@ inhibit_all_warnings!
 
 pod 'AFNetworking', '~> 2.3'
 
+pod 'FlatUIKit', '~> 1.4'
+pod 'MBProgressHUD', '~> 0.8'
+
 # Testing
 
 target :LLMSimpleWeatherAppTests do

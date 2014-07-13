@@ -18,7 +18,7 @@
     LLMWeather *weather = [LLMWeather new];
     weather.date = [NSDate date];
 
-    weather.weatherType = NSStringToLLMWeatherType(dictionary[@"weather"][0][@"main"]);
+    weather.weatherType = NSStringToLLMWeatherType(dictionary[@"weather"][0][@"icon"]);
     weather.temperature = LLMTemperatureMake(
             LLMConvertKelvinToCelsiusDegree([dictionary[@"main"][@"temp_min"] floatValue]),
             LLMConvertKelvinToCelsiusDegree([dictionary[@"main"][@"temp"] floatValue]),
