@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSDateFormatter *timeFormatter;
+@property (nonatomic, strong) NSArray *imageForWeatherTypeNames; // Array of Strings
 
 @end
 
@@ -52,6 +53,27 @@
     self.timeFormatter = [[NSDateFormatter alloc] init];
     [self.timeFormatter setDateStyle:NSDateFormatterNoStyle];
     [self.timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+}
+
+#pragma mark - Images
+
+- (NSArray *)imageForWeatherTypeNames {
+
+    if (self->_imageForWeatherTypeNames == nil) {
+        self.imageForWeatherTypeNames = @[
+                @"ClearSky",
+                @"FewClouds",
+                @"ScatteredClouds",
+                @"BrokenClouds",
+                @"ShowerRain",
+                @"Rain",
+                @"Thunderstorm",
+                @"Snow",
+                @"Mist"
+        ];
+    }
+
+    return self->_imageForWeatherTypeNames;
 }
 
 #pragma mark - View lifecycle
@@ -93,10 +115,25 @@
 
 - (void)updateControlsWithData:(LLMWeatherDisplayData *)weather {
     self.dayAndMonthLabel.text = [self.dateFormatter stringFromDate:weather.date];
+    self.currentWeatherImageView.image = [self getImageForWeatherType:weather.weatherType];
     self.timeLabel.text = [self.timeFormatter stringFromDate:weather.date];
     self.currentTemperatureLabel.text = [self formatTemperature:weather.temperature.currentTemperatureInCelsius];
     self.maxTemperatureLabel.text = [self formatTemperature:weather.temperature.maxTemperatureInCelsius];
     self.minTemperatureLabel.text = [self formatTemperature:weather.temperature.minTemperatureInCelsius];
+}
+
+- (UIImage *)getImageForWeatherType:(LLMWeatherType)type {
+
+    if (![self isThereAnImageForWeatherType:type]) {
+        return nil;
+    }
+
+    NSString *imageName = self.imageForWeatherTypeNames[type];
+    return [UIImage imageNamed:imageName];
+}
+
+- (BOOL)isThereAnImageForWeatherType:(LLMWeatherType)type {
+    return ((int)type > 0 && (int)type < [self.imageForWeatherTypeNames count]);
 }
 
 - (NSString *)formatTemperature:(CGFloat)temperature {
@@ -119,7 +156,6 @@
 }
 
 - (void)showErrorAlertView {
-
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Error"
                                                           message:@"Something happened while retriving data. Try later."
                                                          delegate:nil cancelButtonTitle:@"OK"
