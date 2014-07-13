@@ -18,7 +18,7 @@
 #pragma mark - LLMCurrentWeatherInteractorOutput
 
 - (void)currentWeatherInteractor:(id)currentWeatherInteractor didReceiveUpdatesAboutWeather:(LLMWeather *)currentWeather {
-    [self.userInterface showCurrentWeather:currentWeather];
+    [self.userInterface showCurrentWeather:(LLMWeatherDisplayData *)currentWeather];
 }
 
 - (void)currentWeatherInteractor:(id)currentWeatherInteractor didFailWithError:(NSError *)error {
