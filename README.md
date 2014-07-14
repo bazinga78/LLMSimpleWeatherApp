@@ -5,7 +5,7 @@ LLMSimpleWeatherApp is a very simple application to show to the user the current
 
 Architecture
 -------------
-During this exercise I tried to focus more on the app architecture than just add a lot feature. The architecture I used in this project is a revised version of what I always tried to use in all my projects. I'm a big fan of Bob "Uncle" Martin, I read his book "Clean code" a few times. One day I read a post from him about his thoughts on MVC and on how this pattern fails to achive its own goals. Then he introduce a very neat architecture, called "Clean Architecture", and I've just fallen in love with it (http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+During this exercise I tried to focus more on the app architecture than just add a lot features. The architecture I used in this project is a revised version of what I always tried to use in all my projects. I'm a big fan of Robert "Uncle" Martin, I read his book "Clean code" a few times. One day I read a post from him about his thoughts on MVC and on how this pattern fails to achive its own goals. Then he introduced a very neat architecture, called "Clean Architecture", and I've just fallen in love with it (http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
 Project components
 -------------------
@@ -17,8 +17,8 @@ They are the building block of the business logic's core. Usually they describe 
 #### Interactor & Managers
 
 An Interactor is essentially the implementation of a feature (or use case). The interactor uses Entities and Manager to perform its task.
-A Manager is an object which is responsible to gather information from external sources (like a database or a webservice) hiding the details to the interactor.
-An interactor doesn't know how to present the data to the user, its only responsibility is to perform the task (it's role) coordinating the interactions between managers and applying business rules to the data it manipulates.
+A Manager is an object which is responsible to gather informations from external sources (like a database or a webservice) hiding the details to the interactor.
+An interactor doesn't know how to present the data to the user, its only responsibility is to perform the task and to coordinate the interactions between managers and applying business rules to the data it manipulates.
 
 #### Presenter
 
@@ -31,6 +31,8 @@ Their role is to present data to the user. They are very stupid, they have just 
 About the project
 ------
 
-As I said before I tried to focus on the architecture. I tried to use less external libraries as possible, not because I don't like to but just because I didn't feel it was right thing to do in this kind of exercise. 
+As I said before I tried to focus on the architecture. I tried to use less external libraries as possible, not because I don't like to but just because I didn't feel it was right thing to do in this kind of exercise.
 I tried to write unit test for all of the components, but some are missing for the 'view' component of the app. I like my test code to be clear as possible because I feel it as the same importance as the 'actual' code. So I usually try to use helper method to have to code as much readable as possible.
 I spent a few time on the UI components because I like my app to be visually pleasant. As you can see, I didn't spent on it too much time since I thought it wasn't the goal of this exercise.
+
+There are a lot of different things I would add to this application. As I mention before I would add a proper test suite for the view layer and some integration tests. I would add some other features, like having the chance to change the current viewed city because it would be an interesting feature to show how to handle the routing between views in the app.
